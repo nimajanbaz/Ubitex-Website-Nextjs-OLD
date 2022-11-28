@@ -5,15 +5,10 @@ import axios from "axios";
 import Navbar from "../components/navbar";
 import { Table } from "../components/table";
 import about from "../assets/img/about-2.webp";
-import ubitexLogo from "../assets/img/logo-01.png";
 import mobileApp from "../assets/img/5.webp";
-import {
-  header_images,
-  header_boxes,
-  center_boxes,
-  footer_data,
-} from "../data";
+import { header_images, header_boxes, center_boxes } from "../data";
 import Link from "next/link";
+import Footer from "../components/footer";
 
 export default function Home() {
   const [data, setData] = useState();
@@ -50,7 +45,7 @@ export default function Home() {
           const { bestBuy } = props.row.original;
           return (
             <div className="flex items-center text-sm cursor-pointer">
-              <span>{bestBuy}</span>
+              <span>${bestBuy}</span>
             </div>
           );
         },
@@ -62,7 +57,7 @@ export default function Home() {
           const { bestSell } = props.row.original;
           return (
             <div className="flex items-center text-sm cursor-pointer">
-              <span>{bestSell}</span>
+              <span>${bestSell}</span>
             </div>
           );
         },
@@ -74,7 +69,7 @@ export default function Home() {
           const { latestTrade } = props.row.original;
           return (
             <div className="flex items-center text-sm cursor-pointer">
-              <span>{latestTrade}</span>
+              <span>${latestTrade}</span>
             </div>
           );
         },
@@ -153,9 +148,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="bg-[#04162d]">
+      <Navbar />
+      <div className="dark:bg-[#04162d] bg-gray-100">
         <div className="mx-auto text-white">
-          <Navbar isDark={true} />
           <div className="mx-auto">
             <div className="max-w-[1600px] flex justify-center items-center mx-auto">
               {/* Left Box */}
@@ -167,8 +162,8 @@ export default function Home() {
                       src={image.src}
                       alt={image.alt}
                       className={image.class}
-                      width={"auto"}
-                      height={"auto"}
+                      width={"100%"}
+                      height={"100%"}
                     />
                   );
                 })}
@@ -178,15 +173,21 @@ export default function Home() {
               <div className="flex flex-col space-y-7 items-end lg:w-4/12 md:w-full text-right">
                 <div className="flex flex-col space-y-7">
                   <div className="flex flex-col space-y-2">
-                    <h3 className="text-2xl">...داستان پول عوض شد</h3>
+                    <h3 className="text-2xl dark:text-gray-100 text-gray-800">
+                      ...داستان پول عوض شد
+                    </h3>
                     <h1 className="text-[#f39200] text-4xl font-semibold">
                       صرافی ارز دیجیتال یوبیتکس
                     </h1>
-                    <h3 className="text-2xl">پلتفرم مبادلات رمزارزی شما</h3>
+                    <h3 className="text-2xl dark:text-gray-100 text-gray-800">
+                      پلتفرم مبادلات رمزارزی شما
+                    </h3>
                   </div>
                   <div className="flex flex-col space-y-2">
-                    <h2 className="text-xl">خرید و فروش بیش از 100 رمزارز</h2>
-                    <h2 className="text-xl">
+                    <h2 className="text-xl dark:text-gray-100 text-gray-800">
+                      خرید و فروش بیش از 100 رمزارز
+                    </h2>
+                    <h2 className="text-xl dark:text-gray-100 text-gray-800">
                       در تالار معاملات با کارمزد ثابت 0.0025
                     </h2>
                   </div>
@@ -206,22 +207,26 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="shadow-[0_15px_40px_-15px_rgba(6,37,70,1)] bg-[#04162d] space-y-20">
-              <div className="grid lg:grid-cols-4 md:grid-cols-1 max-w-[1500px] items-center mx-auto ">
+            <div className="dark:shadow-[0_15px_40px_-15px_rgba(6,37,70,1)] shadow-[0_15px_40px_-15px_rgba(0,0,0,0.1)] dark:bg-[#04162d] bg-white space-y-20">
+              <div className="grid lg:grid-cols-4 md:grid-cols-1 gap-14 max-w-[1500px] items-center mx-auto ">
                 {header_boxes.map((data) => {
                   return (
                     <div
-                      className="shadow-[0_15px_40px_-15px_rgba(6,37,70,1)] p-7 hover:bg-[#07244b] backdrop-blur hover:backdrop-blur bg-[#051a36] bg-opacity-25 hover:bg-opacity-30 transition-all rounded-2xl flex flex-col items-end space-y-2 md:mb-3 lg:-mt-16 z-30"
+                      className="dark:shadow-[0_15px_40px_-15px_rgba(6,37,70,1)] shadow-[0_15px_40px_-15px_rgba(0,0,0,0.1)] p-7 dark:hover:bg-[#07244b] backdrop-blur hover:backdrop-blur bg-gray-200 hover:bg-gray-300 dark:bg-[#051a36] bg-opacity-25 hover:bg-opacity-30 transition-all rounded-2xl flex flex-col items-end space-y-2 md:mb-3 lg:-mt-16 z-30 cursor-pointer"
                       key={data.id}>
                       <Image
                         src={data.image}
                         alt=""
-                        className="w-14 text-right bg-[#062246] rounded-lg p-3"
+                        className="w-14 text-right dark:bg-[#062246] bg-gray-300 rounded-lg p-3"
                         width={"auto"}
                         height={"auto"}
                       />
-                      <span>{data.title}</span>
-                      <p className="text-xs text-right">{data.description}</p>
+                      <span className="text-gray-700 dark:text-gray-200">
+                        {data.title}
+                      </span>
+                      <p className="text-xs text-right text-gray-700 dark:text-gray-300">
+                        {data.description}
+                      </p>
                     </div>
                   );
                 })}
@@ -261,17 +266,21 @@ export default function Home() {
                     {center_boxes.map((data) => {
                       return (
                         <div
-                          className="shadow-[0_15px_40px_-15px_rgba(6,37,70,1)] p-7 hover:bg-[#07244b] backdrop-blur hover:backdrop-blur bg-[#051a36] bg-opacity-25 hover:bg-opacity-30 transition-all rounded-lg"
+                          className="dark:shadow-[0_15px_40px_-15px_rgba(6,37,70,1)] shadow-[0_15px_40px_-15px_rgba(0,0,0,0.1)] p-7 dark:hover:bg-[#07244b] backdrop-blur hover:backdrop-blur bg-gray-200 hover:bg-gray-300 dark:bg-[#051a36] bg-opacity-25 hover:bg-opacity-30 transition-all rounded-lg"
                           key={data.id}>
                           <Image
                             src={data.image}
                             alt=""
-                            className="w-14 text-right bg-[#062246] rounded-lg p-3"
+                            className="w-14 text-right bg-gray-200 dark:bg-[#07244b] rounded-lg p-3"
                             width={"auto"}
                             height={"auto"}
                           />
-                          <span>{data.title}</span>
-                          <p className="text-xs mt-3">{data.description}</p>
+                          <span className="text-gray-700 dark:text-gray-200">
+                            {data.title}
+                          </span>
+                          <p className="text-xs mt-3 text-gray-700 dark:text-gray-200">
+                            {data.description}
+                          </p>
                           <span className="text-[#f39200] text-xs mt-3 cursor-pointer">
                             مطالعه بیشتر
                           </span>
@@ -306,13 +315,17 @@ export default function Home() {
                 <div>
                   <div className="flex flex-col space-y-5 mb-3">
                     <div className="flex flex-col space-y-2">
-                      <span className="text-2xl">با اپلیکیشن موبایل</span>
+                      <span className="text-2xl text-gray-700 dark:text-gray-200">
+                        با اپلیکیشن موبایل
+                      </span>
                       <span className="text-4xl font-semibold text-[#f39200]">
                         صرافی ارز دیجیتال یوبیتکس
                       </span>
-                      <span className="text-2xl">همیشه بروز باشید</span>
+                      <span className="text-2xl text-gray-700 dark:text-gray-200">
+                        همیشه بروز باشید
+                      </span>
                     </div>
-                    <p>
+                    <p className="text-gray-700 dark:text-gray-200">
                       ترید آسان، همه جا و همه وقت از طریق اپلیکیشن موبایل
                       یوبیتکس
                     </p>
@@ -329,84 +342,7 @@ export default function Home() {
         </div>
       </div>
 
-      <footer className="bg-[#04162d]">
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-10  max-w-[1300px] mx-auto items-center">
-          <div className="grid grid-col text-center">
-            <span className="text-[#f39200] text-xl font-semibold mb-3">
-              یوبیتکس
-            </span>
-            {footer_data.support.map((item) => {
-              return (
-                <Link href={item.href} key={item.id} className="mb-2">
-                  <span className="hover:text-[#f39200] transition-all">
-                    {item.title}
-                  </span>
-                </Link>
-              );
-            })}
-          </div>
-          <div className="grid grid-col text-center">
-            <span className="text-[#f39200] text-xl font-semibold mb-3">
-              خدمات
-            </span>
-            {footer_data.services.map((item) => {
-              return (
-                <Link href={item.href} key={item.id} className="mb-2">
-                  <span className="hover:text-[#f39200] transition-all">
-                    {item.title}
-                  </span>
-                </Link>
-              );
-            })}
-          </div>
-          <div className="grid grid-col text-center">
-            <span className="text-[#f39200] text-xl font-semibold mb-3">
-              پشتیبانی
-            </span>
-            {footer_data.ubitex.map((item) => {
-              return (
-                <Link href={item.href} key={item.id} className="mb-2">
-                  <span className="hover:text-[#f39200] transition-all">
-                    {item.title}
-                  </span>
-                </Link>
-              );
-            })}
-          </div>
-          <div>
-            <Image
-              src={ubitexLogo}
-              alt=""
-              className="mx-auto w-2/3"
-              width={"auto"}
-              height={"auto"}
-            />
-          </div>
-        </div>
-
-        <div className="grid lg:grid-cols-6 md:grid-cols-2 sm:grid-cols-2 gap-10 max-w-[1300px] mx-auto items-center my-6">
-          {footer_data.download_app.map((img) => {
-            return (
-              <Link href={img.href}>
-                <Image
-                  src={img.img}
-                  alt=""
-                  key={img.id}
-                  width={"auto"}
-                  height={"auto"}
-                />
-              </Link>
-            );
-          })}
-        </div>
-
-        <div className="border-b border-b-[#062042] my-6"></div>
-
-        <div className="flex flex-col justify-center items-center pb-6">
-          <span>تلفن تماس: 91001716 - ساعت 9 الی 17</span>
-          <span>تمام حقوق این سایت متعلق به یوبیتکس می باشد.</span>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }

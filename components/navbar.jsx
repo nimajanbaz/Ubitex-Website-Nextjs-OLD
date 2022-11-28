@@ -2,11 +2,14 @@ import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import logo from "../assets/img/logo-Ubitex.png";
-import { RiMoonClearFill } from "react-icons/ri";
+import { RiMoonClearFill, RiSunLine } from "react-icons/ri";
 import Link from "next/link";
 import Image from "next/image";
+import { useTheme } from "next-themes";
 
 export default function Navbar() {
+  const { theme, setTheme } = useTheme();
+
   const menuItems = [
     {
       id: 1,
@@ -40,10 +43,8 @@ export default function Navbar() {
     },
   ];
   return (
-    <Popover className={`relative mb-5 bg-[#051a36]`}>
-      <div
-        className={`w-full mx-auto shadow-[0_35px_60px_-15px_rgba(6,37,70,1)]
-        `}>
+    <Popover className="relative dark:bg-[#051a36] bg-white">
+      <div className="w-full dark:shadow-[0_15px_40px_0px_rgba(6,37,70,0.7)] shadow-[0_15px_40px_0px_rgba(0,0,0,0.1)]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div
             className={`flex items-center justify-between py-4 md:justify-start md:space-x-10`}>
@@ -64,14 +65,13 @@ export default function Navbar() {
                 <Bars3Icon className="h-6 w-6" aria-hidden="true" />
               </Popover.Button>
             </div>
-            <Popover.Group as="nav" className="hidden space-x-10 md:flex">
+            <Popover.Group as="nav" className="hidden space-x-3 md:flex">
               {menuItems.map((item) => {
                 return (
                   <div key={item.id}>
                     <Link
                       href={item.href}
-                      className={`text-base font-medium text-gray-200 hover:text-[#f39200]
-                      `}>
+                      className="text-base font-medium dark:text-gray-300 hover text-gray-600 hover:text-[#f39200] dark:hover:text-[#f39200] transition-all px-4 py-2 hover:bg-[#f39200] hover:bg-opacity-10 rounded-md">
                       {item.title}
                     </Link>
                   </div>
@@ -84,9 +84,11 @@ export default function Navbar() {
                 className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-[#f39200] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-[#ce7c00]">
                 ورود / ثبت نام
               </a>
-              <div>
-                <span>
-                  <RiMoonClearFill />
+              <div className="ml-3">
+                <span
+                  className="text-2xl cursor-pointer dark:text-gray-300 text-gray-600 hover:text-[#f39200] dark:hover:text-[#f39200] transition-all"
+                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+                  {theme === "light" ? <RiMoonClearFill /> : <RiSunLine />}
                 </span>
               </div>
             </div>

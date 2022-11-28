@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+  @apply bg-white dark:bg-[#04162d]
+}
+
 @keyframes floatUp1 {
   0% {
     transform: translateY(0px);
