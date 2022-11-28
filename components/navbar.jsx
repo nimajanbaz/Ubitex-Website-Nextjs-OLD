@@ -4,8 +4,9 @@ import { Bars3Icon } from "@heroicons/react/24/outline";
 import logo from "../assets/img/logo-Ubitex.png";
 import { RiMoonClearFill } from "react-icons/ri";
 import Link from "next/link";
+import Image from "next/image";
 
-export default function Navbar({ isDark }) {
+export default function Navbar() {
   const menuItems = [
     {
       id: 1,
@@ -39,23 +40,21 @@ export default function Navbar({ isDark }) {
     },
   ];
   return (
-    <Popover
-      className={`relative mb-5 ${isDark ? "bg-[#051a36]" : "bg-white"}`}>
+    <Popover className={`relative mb-5 bg-[#051a36]`}>
       <div
-        className={`w-full mx-auto shadow-xl ${
-          isDark
-            ? "shadow-[0_35px_60px_-15px_rgba(6,37,70,1)]"
-            : "shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]"
-        }`}>
+        className={`w-full mx-auto shadow-[0_35px_60px_-15px_rgba(6,37,70,1)]
+        `}>
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div
             className={`flex items-center justify-between py-4 md:justify-start md:space-x-10`}>
             <div className="flex justify-start lg:w-0 lg:flex-1">
               <Link href="/">
-                <img
+                <Image
                   className="h-12 w-auto sm:h-10"
                   src={logo}
                   alt="Ubitex Logo"
+                  width={"auto"}
+                  height={"auto"}
                 />
               </Link>
             </div>
@@ -71,11 +70,8 @@ export default function Navbar({ isDark }) {
                   <div key={item.id}>
                     <Link
                       href={item.href}
-                      className={`text-base font-medium ${
-                        isDark
-                          ? "text-gray-200 hover:text-[#f39200]"
-                          : "text-gray-500 hover:text-[#04162d]"
-                      }`}>
+                      className={`text-base font-medium text-gray-200 hover:text-[#f39200]
+                      `}>
                       {item.title}
                     </Link>
                   </div>
@@ -117,11 +113,8 @@ export default function Navbar({ isDark }) {
                     <div key={item.id}>
                       <Link
                         to={item.href}
-                        className={`text-base font-medium ${
-                          isDark
-                            ? "text-gray-500 hover:text-[#f39200]"
-                            : "text-gray-500 hover:text-[#04162d]"
-                        }`}>
+                        className={`text-base font-medium text-gray-500 hover:text-[#f39200]
+                        `}>
                         {item.title}
                       </Link>
                     </div>

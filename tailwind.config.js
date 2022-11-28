@@ -1,15 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-  ],
-  darkMode: 'class',
+  purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
+  darkMode: "class",
   theme: {
     extend: {
-      fontFamily: {
-        display: ["IRANYekan-Ubitex"],
-      },
       animation: {
         ver_7s: "7s ease-in-out 0s infinite normal none running floatUp1",
         ver_5s: "5s ease-in-out 0s infinite normal none running floatUp1",

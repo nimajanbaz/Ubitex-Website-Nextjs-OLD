@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: "IRANYekan-Ubitex";
-  src: url('./assets/fonts/IRANYekanMedium.woff');
-}
-
 @keyframes floatUp1 {
   0% {
     transform: translateY(0px);
