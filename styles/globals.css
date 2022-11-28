@@ -1,26 +1,70 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "IRANYekan-Ubitex";
+  src: url('./assets/fonts/IRANYekanMedium.woff');
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+@keyframes floatUp1 {
+  0% {
+    transform: translateY(0px);
   }
-  body {
-    color: white;
-    background: black;
+
+  50% {
+    transform: translateY(-20px);
   }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes floatLeft {
+  0% {
+    transform: translateX(0px);
+  }
+
+  50% {
+    transform: translateX(-20px);
+  }
+
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+.rtl-grid {
+  direction: rtl;
+}
+
+.filter-green {
+  filter: invert(42%) sepia(56%) saturate(3755%) hue-rotate(110deg) brightness(95%) contrast(100%);
+}
+
+.filter-red {
+  filter: invert(22%) sepia(56%) saturate(88855%) hue-rotate(344deg) brightness(100%) contrast(100%)
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 50%;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #0f4f8b9c;
+  @apply bg-[#04162d] rounded-full
+}
+
+::-webkit-scrollbar-thumb {
+  /* background: #0c3e6d; */
+  transition: 0.15s;
+  border-radius: 5px;
+  @apply bg-[#0c3e6d]
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f39200;
+  transition: 0.15s;
 }
