@@ -135,12 +135,12 @@ export const footer_data = {
     {
       id: 1,
       title: "تالار معاملات",
-      href: "/redirect-to-platform",
+      href: "https://app.ubitex.io",
     },
     {
       id: 2,
       title: "کارت هدیه",
-      href: "/redirect-to-platform",
+      href: "https://app.ubitex.io",
     },
     {
       id: 3,

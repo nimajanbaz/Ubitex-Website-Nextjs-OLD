@@ -14,7 +14,7 @@ export default function Navbar() {
     {
       id: 1,
       title: "قیمت لحظه‌ای",
-      href: "/redirect-to-markets",
+      href: "https://app.ubitex.io/markets",
     },
     {
       id: 2,
@@ -24,7 +24,7 @@ export default function Navbar() {
     {
       id: 3,
       title: "تالار معاملات",
-      href: "/redirect-to-platform",
+      href: "https://app.ubitex.io",
     },
     {
       id: 4,
@@ -34,7 +34,7 @@ export default function Navbar() {
     {
       id: 5,
       title: "بلاگ",
-      href: "/redirect-to-blog",
+      href: "/blog",
     },
     {
       id: 6,
